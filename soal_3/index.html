@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="UTF-8">
+      <title>Soal 3</title>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">      
+   </head>
+
+   <body class="bg-gray-900 text-white p-6">
+
+      <div id="app" class="container mx-auto">
+
+         <h2 class="text-2xl mb-4">(Soal 3) pemilihan dengan metode Analytical Hierarchy Process (AHP)
+         </h2>
+
+         <div class="my-6">
+            <h3 class="text-xl mb-2">Tabel Kriteria</h3>
+            <table class="min-w-full bg-gray-800 rounded-lg overflow-hidden">
+               <thead class="bg-gray-700">
+                  <tr>
+                     <th class="border px-4 py-2">Kriteria</th>
+                     <th class="border px-4 py-2">Bobot Relatif</th>
+                  </tr>
+               </thead>
+               <tbody class="bg-gray-900">
+                  <tr v-for="(value, key) in criteriaWeight" :key="key">
+                     <td class="border px-4 py-2">{{ key }}</td>
+                     <td class="border px-4 py-2">{{ value.toFixed(4) }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h3 class="text-xl mb-2">Tabel Alternatif</h3>
+            <table class="min-w-full bg-gray-800 rounded-lg overflow-hidden">
+               <thead class="bg-gray-700">
+                  <tr>
+                     <th class="border px-4 py-2">Alternatif</th>
+                     <th v-for="alternative in alternatives" class="border px-4 py-2">{{ alternative.name }}</th>
+                  </tr>
+               </thead>
+               <tbody class="bg-gray-900">
+                  <tr>
+                     <td class="border px-4 py-2">Bobot Relatif</td>
+                     <td v-for="alternative in alternatives" class="border px-4 py-2">
+                        {{ highestScorePerAlternative[alternative.name] ? highestScorePerAlternative[alternative.name].toFixed(4) : 'N/A' }}
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h3 class="text-xl mb-2">Pengurutan Berdasarkan Skor Tertinggi ke Terendah</h3>
+            <table class="min-w-full bg-gray-800 rounded-lg overflow-hidden">
+               <thead class="bg-gray-700">
+                  <tr>
+                     <th class="border px-4 py-2">Alternatif</th>
+                     <th class="border px-4 py-2">Skor</th>
+                  </tr>
+               </thead>
+               <tbody class="bg-gray-900">
+                  <tr v-for="option in sortedOptions" :key="option.name">
+                     <td class="border px-4 py-2">{{ option.name }}</td>
+                     <td class="border px-4 py-2">{{ option.score ? option.score.toFixed(4) : 'N/A' }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h3 class="text-xl mb-2">Menentukan Opsi terbaik</h3>
+            <p>Berdasarkan hasil di atas, opsi terbaik yang bisa dipilih adalah {{ bestOption }} dengan skor paling
+               tinggi
+               yaitu {{ highestScore.toFixed(4) }}.</p>
+         </div>
+
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+      <script src="app.js"></script>
+
+   </body>
+
+</html>
