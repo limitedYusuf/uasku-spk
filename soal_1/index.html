@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Soal 1</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+   </head>
+
+   <body class="bg-gray-900 text-white">
+      <div id="app" class="container mx-auto p-4">
+         <h1 class="text-2xl mb-4">(Soal 1) Pemilihan Perangkat Lunak RDBMS</h1>
+
+         <div class="my-6">
+            <h2 class="text-xl mb-2">Tabel Alternatif</h2>
+            <table class="min-w-full bg-gray-700 dark:bg-gray-800 border rounded text-white">
+               <thead>
+                  <tr class="bg-gray-600 dark:bg-gray-700">
+                     <th class="border px-4 py-2">Kriteria</th>
+                     <th class="border px-4 py-2">Performa</th>
+                     <th class="border px-4 py-2">Keamanan</th>
+                     <th class="border px-4 py-2">Fitur</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr v-for="(item, index) in alternatif" :key="index" class="text-center">
+                     <td class="border px-4 py-2">{{ item.nama }}</td>
+                     <td class="border px-4 py-2">{{ item.performa }}</td>
+                     <td class="border px-4 py-2">{{ item.keamanan }}</td>
+                     <td class="border px-4 py-2">{{ item.fitur }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h2 class="text-xl mb-2">Nilai Total Alternatif</h2>
+            <table class="min-w-full bg-gray-700 dark:bg-gray-800 border rounded text-white">
+               <thead>
+                  <tr class="bg-gray-600 dark:bg-gray-700">
+                     <th class="border px-4 py-2">Alternatif</th>
+                     <th class="border px-4 py-2">Nilai Total</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr v-for="(item, index) in alternatif" :key="index" class="text-center">
+                     <td class="border px-4 py-2">{{ item.nama }}</td>
+                     <td class="border px-4 py-2">{{ calculateNilaiTotal(item) }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h2 class="text-xl mb-2">Perankingan Alternatif</h2>
+            <table class="min-w-full bg-gray-700 dark:bg-gray-800 border rounded text-white">
+               <thead>
+                  <tr class="bg-gray-600 dark:bg-gray-700">
+                     <th class="border px-4 py-2">Peringkat</th>
+                     <th class="border px-4 py-2">Alternatif</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr v-for="(item, index) in sortedAlternatif" :key="index" class="text-center">
+                     <td class="border px-4 py-2">{{ index + 1 }}</td>
+                     <td class="border px-4 py-2">{{ item.nama }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h3 class="text-xl text-center text-yellow-800 font-bold uppercase mb-2">Berdasarkan Output diatas Perangkat
+               lunak RDBMS yang harus dihentikan penggunaannya adalah "{{ perangkatTertinggi }}"</h3>
+         </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+      <script src="app.js"></script>
+   </body>
+
+</html>
