@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="UTF-8">
+      <title>Soal 2</title>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   </head>
+
+   <body class="bg-gray-900 text-white">
+
+      <div id="app" class="container mx-auto">
+
+         <h1 class="text-2xl mb-4">(Soal 2) Pemilihan Perangkat Lunak RDBMS (Weighted Product)</h1>
+
+         <div class="my-6">
+            <h2 class="text-xl mb-2">Data Alternatif</h2>
+            <table class="min-w-full bg-gray-700 dark:bg-gray-800 border rounded text-white">
+               <thead class="bg-gray-700">
+                  <tr class="text-center">
+                     <th class="border px-4 py-2">Alternatif</th>
+                     <th class="border px-4 py-2">Performa</th>
+                     <th class="border px-4 py-2">Keamanan</th>
+                     <th class="border px-4 py-2">Biaya</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center" v-for="(item, index) in alternatif" :key="index">
+                     <td class="border px-4 py-2">{{ item.id }}</td>
+                     <td class="border px-4 py-2">{{ item.c1 }}</td>
+                     <td class="border px-4 py-2">{{ item.c2 }}</td>
+                     <td class="border px-4 py-2">{{ item.c3 }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h2 class="text-xl mb-2">Hasil Vektor Bobot</h2>
+            <table class="min-w-full bg-gray-700 dark:bg-gray-800 border rounded text-white">
+               <thead class="bg-gray-700">
+                  <tr class="text-center">
+                     <th class="border px-4 py-2">Alternatif</th>
+                     <th class="border px-4 py-2">Vektor Bobot</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center" v-for="(value, key) in vektorBobot" :key="key">
+                     <td class="border px-4 py-2">{{ key }}</td>
+                     <td class="border px-4 py-2">{{ value }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="my-6">
+            <h2 class="text-xl mb-2">Pengurutan Alternatif (Dari Tertinggi ke Terendah)</h2>
+            <table class="min-w-full bg-gray-700 dark:bg-gray-800 border rounded text-white">
+               <thead class="bg-gray-700">
+                  <tr class="text-center">
+                     <th class="border px-4 py-2">Alternatif</th>
+                     <th class="border px-4 py-2">Vektor Bobot</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center" v-for="(item, index) in sortedVektorBobot" :key="index">
+                     <td class="border px-4 py-2">{{ item[0] }}</td>
+                     <td class="border px-4 py-2">{{ item[1] }}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="mt-6">
+            <p class="text-xl text-center text-lime-600 font-bold uppercase mb-2">Berdasarkan hasil pemilihan perangkat
+               lunak RDBMS, alternatif perangkat lunak RDBMS yang paling layak untuk digunakan adalah
+               "{{ perangkatTertinggi }}".</p>
+         </div>
+
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+      <script src="app.js"></script>
+   </body>
+
+</html>
